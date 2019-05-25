@@ -1,0 +1,19 @@
+{
+  "name": "utiljs",
+  "version": "1.0.0",
+  "description": "some utilities for API, Web Apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonNozaki/utiljs.git"
+  },
+  "author": "snozaki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonNozaki/utiljs/issues"
+  },
+  "homepage": "https://github.com/simonNozaki/utiljs#readme"
+}
