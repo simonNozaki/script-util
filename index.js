@@ -1,3 +1,6 @@
+/**
+ * よく使う定数オブジェクト
+ */
 module.exports.consts = function(){
 
     /**
@@ -171,6 +174,8 @@ module.exports.isDateFormat = function(operand) {
 module.exports.formatYMDWithSlash = function(operand) {
     if(isNullOrUndefined(operand)) return LOGGING_CONST.SPACE;
 
+    if(!this.isDateFormat(operand)) return LOGGING_CONST.SPACE;
+
     let year = operand.getFullYear();
     let month = operand.getMonth() + 1;
     let date = operand.getDate();
@@ -185,7 +190,7 @@ module.exports.formatYMDWithSlash = function(operand) {
  */
 module.exports.hasItems = function(t){
     // nullもしくは不正な値
-    if(this.isNullOrUndefined(t) || this.isNullOrUndefined(Object.keys(t.length))) return false;
+    if(this.isNullOrUndefined(t)) return false;
 
     // サイズ0以下
     if(Object.keys(t).length <= 0) return false;

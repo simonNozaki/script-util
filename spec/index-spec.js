@@ -27,10 +27,15 @@ describe("isNullOrUndefined", function(){
         expect(utiljs.isNullOrUndefined("utiljs")).toBe(false);
     });
 
+    // 数値
+    it("005", function(){
+        expect(utiljs.isNullOrUndefined(3)).toBe(false);
+    });
+
 });
 
 /**
- * 
+ * JSON形式判定
  */
 describe("isJson", function(){
     // JSON形式(オブジェクトあり)
@@ -63,7 +68,7 @@ describe("isJson", function(){
 });
 
 /**
- * 
+ * 日付フォーマットチェック
  */
 describe("isDateFormat", function(){
 
@@ -94,7 +99,7 @@ describe("isDateFormat", function(){
 });
 
 /**
- * 
+ * リストに要素が含まれていることを確認する
  */
 describe("hasItems", function(){
 
@@ -102,5 +107,23 @@ describe("hasItems", function(){
     it("001", function(){
         var subject = ["1", "2", "3"];
         expect(utiljs.hasItems(subject)).toBe(true);
+    });
+
+    // 空の配列
+    it("002", function(){
+        var subject = [];
+        expect(utiljs.hasItems(subject)).toBe(false);
+    });
+
+    // 配列ではない
+    it("003", function(){
+        var subject = "asserted message";
+        expect(utiljs.hasItems(subject)).toBe(false);
+    });
+
+    // null
+    it("004", function(){
+        var subject = null;
+        expect(utiljs.hasItems(subject)).toBe(false);
     });
 });
