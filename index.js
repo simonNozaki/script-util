@@ -1,105 +1,103 @@
 /**
- * よく使う定数オブジェクト
+ * ログ出力定数
  */
-module.exports.consts = function(){
+const LOGGING_CONST = {
+    /**
+     * トレースメッセージ開始
+     */
+    TRACE_START : "[Trace log start]",
 
     /**
-     * ログ出力定数
+     * トレースメッセージ終了
      */
-    const LOGGING_CONST = {
-        /**
-         * トレースメッセージ開始
-         */
-        TRACE_START : "[Trace log start]",
-
-        /**
-         * トレースメッセージ終了
-         */
-        TRACE_END : "[Trace log end]",
-
-        /**
-         * 処理中にエラーが発生しました。
-         */
-        TRACE_ERROR : "処理中にエラーが発生しました。",
-
-        /**
-         * APIの処理を開始します。
-         */
-        STR_PROCESS_START : "APIの処理を開始します。",
-
-        /**
-         * APIの処理を終了します。
-         */
-        STR_PROCESS_END : "APIの処理を終了します。",
-
-        /**
-         * 改行コード
-         */
-        TRACE_NEW_LINE : "\n",
-
-        /**
-         * スペース
-         */
-        SPACE : " ",
-
-        /**
-         * コロン
-         */
-        COLON : ":",
-
-        /**
-         * スラッシュ
-         */
-        STR_SLASH : "/"
-    }.exports = LOGGING_CONST
+    TRACE_END : "[Trace log end]",
 
     /**
-     * HTTPヘッダーキー
+     * 処理中にエラーが発生しました。
      */
-    const HTTP_HEADER_KEY = {
-        /**
-         * コンテンツタイプ
-         */
-        CONTENT_TYPE : "Content-Type",
-
-        /**
-         * Authorization
-         */
-        AUTHORIZATION : "Authorization"
-    }
+    TRACE_ERROR : "処理中にエラーが発生しました。",
 
     /**
-     * HTTPヘッダー値
+     * APIの処理を開始します。
      */
-    const HTTP_HEADER_VALUE = {
-        /**
-         * application/json
-         */
-        CONTENT_TYPE_APPLICATION_JSON : "application/json",
-
-        /**
-         * application/x-www-form-urlencoded
-         */
-        CONTENT_TYPE_X_WWW_FROM_URLENCODED : "application/x-www-form-urlencoded",
-
-        /**
-         * Bearer
-         */
-        BEARER : "Bearer"
-    }
+    STR_PROCESS_START : "APIの処理を開始します。",
 
     /**
-     * HTTPメソッド
+     * APIの処理を終了します。
      */
-    const HTTP_METHOD = {
-        GET : "GET",
-        POST : "POST",
-        PUT : "PUT",
-        PATCH : "PATCH",
-        DELETE : "DELETE"
-    }
+    STR_PROCESS_END : "APIの処理を終了します。",
 
+    /**
+     * 改行コード
+     */
+    TRACE_NEW_LINE : "\n",
+
+    /**
+     * スペース
+     */
+    SPACE : " ",
+
+    /**
+     * コロン
+     */
+    COLON : ":",
+
+    /**
+     * スラッシュ
+     */
+    STR_SLASH : "/"
 }
+
+/**
+ * HTTPヘッダーキー
+ */
+const HTTP_HEADER_KEY = {
+    /**
+     * コンテンツタイプ
+     */
+    CONTENT_TYPE : "Content-Type",
+
+    /**
+     * Authorization
+     */
+    AUTHORIZATION : "Authorization"
+}
+
+/**
+ * HTTPヘッダー値
+ */
+const HTTP_HEADER_VALUE = {
+    /**
+     * application/json
+     */
+    CONTENT_TYPE_APPLICATION_JSON : "application/json",
+
+    /**
+     * application/x-www-form-urlencoded
+     */
+    CONTENT_TYPE_X_WWW_FROM_URLENCODED : "application/x-www-form-urlencoded",
+
+    /**
+     * Bearer
+     */
+    BEARER : "Bearer"
+}
+
+/**
+ * HTTPメソッド
+ */
+const HTTP_METHOD = {
+    GET : "GET",
+    POST : "POST",
+    PUT : "PUT",
+    PATCH : "PATCH",
+    DELETE : "DELETE"
+}
+
+module.exports.LOGGING_CONST = LOGGING_CONST;
+module.exports.HTTP_HEADER_KEY = HTTP_HEADER_KEY;
+module.exports.HTTP_HEADER_VALUE = HTTP_HEADER_VALUE;
+module.exports.HTTP_METHOD = HTTP_METHOD;
 
 /**
  * 引数がnullもしくはundefinedであることを確認します。
@@ -124,12 +122,12 @@ module.exports.isNullOrUndefined = function(subject){
 module.exports.isJson = function(subject) {
 
     // 引数が関数であるかチェック
-    var arg = (typeof subject === Function) ? arg() : arg;
+    subject = (typeof subject === "function") ? subject() : subject;
 
-    if(typeof arg !== String) return false;
+    if(typeof subject !== "string") return false;
 
     try{
-        arg = (!JSON) ? eval("(" + arg + ")") : JSON.parse(arg);
+        subject = (!JSON) ? eval("(" + subject + ")") : JSON.parse(subject);
         return true;
     }catch(e){
         return false;
@@ -172,15 +170,17 @@ module.exports.isDateFormat = function(operand) {
  * @returns YYYY/MM/DD形式の日付文字列
  */
 module.exports.formatYMDWithSlash = function(operand) {
-    if(isNullOrUndefined(operand)) return LOGGING_CONST.SPACE;
+    if(this.isNullOrUndefined(operand)) return this.LOGGING_CONST.SPACE;
 
-    if(!this.isDateFormat(operand)) return LOGGING_CONST.SPACE;
+    if(!(operand instanceof Date)) return this.LOGGING_CONST.SPACE;
+
+    if(!this.isDateFormat(operand)) return this.LOGGING_CONST.SPACE;
 
     let year = operand.getFullYear();
     let month = operand.getMonth() + 1;
     let date = operand.getDate();
 
-    return year + LOGGING_CONST.SLASH + month + LOGGING_CONST.SLASH + date;
+    return year + this.LOGGING_CONST.STR_SLASH + month + this.LOGGING_CONST.STR_SLASH + date;
 }
 
 /**

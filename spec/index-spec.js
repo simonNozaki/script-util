@@ -133,3 +133,15 @@ describe("hasItems", function(){
         expect(utiljs.hasItems(subject)).toBe(false);
     });
 });
+
+/**
+ * Dateインスタンスからスラッシュ区切りに変換
+ */
+describe("formatYMDWithSlash", function(){
+
+    // 正常な形式
+    it("001", function(){
+        // expect(utiljs.formatYMDWithSlash(new Date())).toBe("2019/05/27");
+    });
+
+});
