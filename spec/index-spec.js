@@ -126,4 +126,10 @@ describe("hasItems", function(){
         var subject = null;
         expect(utiljs.hasItems(subject)).toBe(false);
     });
+
+    // 空文字
+    it("005", function(){
+        var subject = "";
+        expect(utiljs.hasItems(subject)).toBe(false);
+    });
 });

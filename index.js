@@ -192,6 +192,9 @@ module.exports.hasItems = function(t){
     // nullもしくは不正な値
     if(this.isNullOrUndefined(t)) return false;
 
+    // 配列形式ではない
+    if(!(t instanceof Array)) return false;
+
     // サイズ0以下
     if(Object.keys(t).length <= 0) return false;
 
