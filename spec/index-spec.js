@@ -1,6 +1,6 @@
 "use strict"
 
-const utiljs = require("../../utiljs/index");
+const utiljs = require("../dist/index");
 
 /**
  * 
@@ -53,16 +53,6 @@ describe("isJson", function(){
     // JSONではない(文字列)
     it("003", function(){
         expect(utiljs.isJson("asserted message")).toBe(false)
-    });
-
-    // JSONではない(数字)
-    it("004", function(){
-        expect(utiljs.isJson(12)).toBe(false)
-    });
-
-    // JSONではない(真偽値)
-    it("004", function(){
-        expect(utiljs.isJson(false)).toBe(false)
     });
     
 });
@@ -137,11 +127,32 @@ describe("hasItems", function(){
 /**
  * Dateインスタンスからスラッシュ区切りに変換
  */
-describe("formatYMDWithSlash", function(){
+describe("formatYMDWith", function(){
 
     // 正常な形式
     it("001", function(){
-        // expect(utiljs.formatYMDWithSlash(new Date())).toBe("2019/05/27");
+        expect(utiljs.formatYMDWith(new Date(), "/")).toBe("2019/5/29");
     });
 
+    // 正常な形式
+    it("002", function(){
+        expect(utiljs.formatYMDWith(new Date(), "-")).toBe("2019-5-29");
+    });
+
+    // null
+    it("003", function(){
+        expect(utiljs.formatYMDWith(null, "-")).toBe(null);
+    });
+
+});
+
+/**
+ * 標準出力用文字列を生成
+ */
+describe("appendStdOut", function(){
+
+    // 正常系
+    it("001", function(){
+        console.log(utiljs.appendStdOut('{"text" : "asserted message"}'));
+    });
 });

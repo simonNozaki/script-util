@@ -18,5 +18,8 @@
   "homepage": "https://github.com/simonNozaki/utiljs#readme",
   "dependencies": {
     "jasmine": "^3.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.5"
   }
 }
