@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/simonNozaki/utiljs#readme",
   "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
     "jasmine": "^3.4.0"
   },
   "devDependencies": {
