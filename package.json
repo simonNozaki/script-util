@@ -1,6 +1,6 @@
 {
-  "name": "utiljs",
-  "version": "1.0.0",
+  "name": "script-util",
+  "version": "1.0.1",
   "description": "some utilities for API, Web Apps",
   "main": "index.js",
   "scripts": {

@@ -5,52 +5,72 @@ export const LOGGING_CONST = {
     /**
      * トレースメッセージ開始
      */
-    TRACE_START : "[Trace log start]",
+    STR_TRACE_START : "[Trace log start]",
 
     /**
      * トレースメッセージ終了
      */
-    TRACE_END : "[Trace log end]",
+    STR_TRACE_END : "[Trace log end]",
 
     /**
      * 処理中にエラーが発生しました。
      */
-    TRACE_ERROR : "処理中にエラーが発生しました。",
+    STR_TRACE_ERROR : "処理中にエラーが発生しました。",
 
     /**
      * APIの処理を開始します。
      */
-    STR_PROCESS_START : "APIの処理を開始します。",
+    STR_API_PROCESS_START : "APIの処理を開始します。",
 
     /**
      * APIの処理を終了します。
      */
-    STR_PROCESS_END : "APIの処理を終了します。",
+    STR_API_PROCESS_END : "APIの処理を終了します。",
+
+    /**
+     * Controllerの処理を開始します。
+     */
+    STR_CONTROLLER_PROCESS_START : "Controllerの処理を開始します。",
+
+    /**
+     * Controllerの処理を終了します。
+     */
+    STR_CONTROLLER_PROCESS_END : "Controllerの処理を終了します。",
+
+    /**
+     * Serviceの処理を開始します。
+     */
+    STR_SERVICE_PROCESS_START : "Serviceの処理を開始します。",
+
+    /**
+     * Serviceの処理を終了します。
+     */
+    STR_SERVICE_PROCESS_END : "Serviceの処理を終了します。",
 
     /**
      * 改行コード
      */
-    TRACE_NEW_LINE : "\n",
+    SYMBOL_NEW_LINE : "\n",
 
     /**
      * スペース
      */
-    SPACE : " ",
+    SYMBOL_SPACE : " ",
 
     /**
      * コロン
      */
-    COLON : ":",
+    SYMBOL_COLON : ":",
 
     /**
      * スラッシュ
      */
-    STR_SLASH : "/",
+    SYMBOL_SLASH : "/",
 
     /**
      * ハイフン
      */
-    STR_HYPHEN : "-"
+    SYMBOL_HYPHEN : "-"
 }
 
 /**
@@ -102,7 +122,7 @@ export const HTTP_METHOD = {
 /**
  * 引数がnullもしくはundefinedであることを確認します。
  */
-export function isNullOrUndefined(subject: object | string): boolean{
+export function isNullOrUndefined(subject: any): boolean{
     // null
     if(typeof subject === null || subject == null) return true;
 
@@ -140,7 +160,7 @@ export function appendStdOut(object: string){
 
     if(isJson(object)) main = JSON.stringify(object);
 
-    return LOGGING_CONST.TRACE_START + LOGGING_CONST.TRACE_NEW_LINE + main + LOGGING_CONST.TRACE_NEW_LINE + LOGGING_CONST.TRACE_END;
+    return LOGGING_CONST.STR_TRACE_START + LOGGING_CONST.SYMBOL_NEW_LINE + main + LOGGING_CONST.SYMBOL_NEW_LINE + LOGGING_CONST.STR_TRACE_END;
 }
 
 /**
@@ -183,6 +203,23 @@ export function hasItems<T>(t: T[]): boolean{
 
     // サイズ0以下
     if(Object.keys(t).length <= 0) return false;
+
+    return true;
+}
+
+/**
+ * リストの要素が全てnullもしくはundefinedではないことを確認する
+ * @param t T型の配列
+ * @returns 結果の真偽値
+ */
+export function hasNoNull<T>(t: T[]): boolean{
+    // リストが空もしくはnull
+    if(!hasItems(t)) return false;
+
+    // 要素が空もしくはnull
+    for(let i = 0; i < t.length; i++){
+        if(isNullOrUndefined(t[i])) return false;
+    }
 
     return true;
 }

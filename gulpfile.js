@@ -17,5 +17,5 @@ gulp.task("test", async function(){
 gulp.task("assemble",  async function(){
     gulp.src("src/*.ts")
         .pipe(typescript())
-        .pipe(gulp.dest("dist"))
+        .pipe(gulp.dest("."))
 });
