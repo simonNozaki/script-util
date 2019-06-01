@@ -1,8 +1,12 @@
 https://travis-ci.org/simonNozaki/utiljs.svg?branch=master
 # script-util
-よく使う定数、ユーティリティのパッケージ。  
-配列操作、文字列操作、オブジェクト操作を提供する。
+Utility package for usual operation like checking null or undefined, operating array.
 
-# usage
-呼び出し。  
-`const script-util = require("script-util");`  
+
+## 1. Usage
+### 1-1. Call to utility
+`const scriptUtil = require("script-util");`  
+
+## 2. Methods
+Please refer to this link.  
+https://github.com/simonNozaki/script-util/docs/methods.md
