@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+        <meta name="view-port" content="width=device-width, initial-scale=1">
+        <title> script-util </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h1 id="methods"> Script Util </h1>
+                <p>This is Script Util methods documents.</p>
+                <h2 id="index">Index</h2>
+                <ul>
+                    <li>isNullOrUndefined</li>
+                    <li>isJson</li>
+                    <li>appendStdOut</li>
+                    <li>isDateFormat</li>
+                    <li>formatYMDWith</li>
+                    <li>hasItems</li>
+                    <li>hasNoNull</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2 class="card-header">
+                    isNullOrUndefined
+                </h2>
+                <div class="card-body">
+                    <h3 class="card-title">Check the parameter if that is null or undefined.</h3>
+                    <h4 class="card-text">Signature</h4>
+                    <ul>
+                        <li>parameter subject: any</li>
+                        <li>returns boolean</li>
+                    </ul>
+                    <h3 id="sample">Sample</h3>
+                    <pre><code>
+                        const scriptUtil = require(&quot;script-util&quot;);
+                        // return true
+                        if(scriptUtil.isNullOrUndefined(null)) { // processing }
+                    </code></pre>
+                </div>
+            </div>
+            <h2 id="isjson">isJson</h2>
+            <p>Return true if the string is formatted with JSON.</p>
+                <h3 id="signature">Signature</h3>
+                <ul>
+                    <li>parameter subject: string</li>
+                    <li>
+                        returns boolean
+                        <h3 id="sample">Sample</h3>
+                            <pre><code>const scriptUtil = <span class="hljs-keyword">require</span>(<span class="hljs-string">"script-util"</span>);
+                            <span class="hljs-keyword">let</span> <span class="hljs-built_in">data</span> = <span class="hljs-string">'{"text" : "message"}'</span>;
+                            <span class="hljs-comment">// return true</span>
+                            <span class="hljs-keyword">if</span>(scriptUtil.isJson(<span class="hljs-built_in">data</span>)) { <span class="hljs-comment">// processing }</span>
+                            </code></pre>
+                    </li>
+                </ul>
+            <h2 id="appendstdout">appendStdOut</h2>
+            <p>Return the string for the standard output.</p>
+                <h3 id="signature">Signature</h3>
+                <ul>
+                    <li>parameter object: string</li>
+                    <li>
+                        returns string for standard output<h3 id="sample">Sample</h3>
+                        <pre><code>console.<span class="hljs-built_in">log</span>(appendStdOut(<span class="hljs-string">"result"</span>));
+                        <span class="hljs-comment">// [Trace log start] </span>
+                        <span class="hljs-comment">// result</span>
+                        <span class="hljs-comment">// [Trace log end]</span>
+                        </code></pre>
+                    </li>
+                </ul>
+            <h2 id="isdateformat">isDateFormat</h2>
+            <p>Return true if the format of the parameter is date.</p>
+                <h3 id="signature">Signature</h3>
+                <ul>
+                    <li>
+                        parameter operand: string
+                        -returns boolean<h3 id="sample">Sample</h3>
+                        <pre><code><span class="hljs-function"><span class="hljs-title">if</span><span class="hljs-params">(scriptUtil.isDateFormat(<span class="hljs-string">"2019-05-31"</span>)</span></span>) { <span class="hljs-comment">// processing }</span>
+                        </code></pre></li>
+                </ul>
+            <h2 id="formatymdwith">formatYMDWith</h2>
+            <p>Reshape string of date for designated format.<br>2nd paramter, <code>symbol</code> is delimiter of year, month and date.
+            The delimiter is valid only for <code>/</code> or <code>-</code>.</p>
+                <h3 id="signature">Signature</h3>
+                <ul>
+                    <li>parameter operand: Date, symbol: string</li>
+                    <li>
+                        returns date string<h3 id="sample">Sample</h3>
+                        <pre><code>console.<span class="hljs-built_in">log</span>((scriptUtil.formatYMDWith(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(), <span class="hljs-string">"-"</span>))
+                        <span class="hljs-comment">// 2019-05-31</span>
+                        </code></pre>
+                    </li>
+                </ul>
+            <h2 id="hasitems">hasItems</h2>
+            <p>Return true if an array has more than one element.</p>
+                <h3 id="signature">Signature</h3>
+                <ul>
+                    <li>paramter t: T[]</li>
+                    <li>
+                        returns boolean<h3 id="sample">Sample</h3>
+                        <pre><code><span class="hljs-comment">// return true</span>
+                        if(scriptUtil.hasItems([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>])){ <span class="hljs-comment">// processing }</span>
+                        </code></pre>
+                    </li>
+                </ul>
+            <h2 id="hasnonull">hasNoNull</h2>
+            <p>Return true if an array has no null elements.</p>
+                <h3 id="signature">Signature</h3>
+                <ul>
+                    <li>parameter t: T[]</li>
+                    <li>
+                        returns boolean<h3 id="sample">Sample</h3>
+                        <pre><code><span class="hljs-comment">// return false</span>
+                        <span class="hljs-keyword">if</span>(scriptUtil.hasNoNull([<span class="hljs-number">1</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>])){ <span class="hljs-comment">// processing }</span>
+                        </code></pre>
+                    </li>
+                </ul>       
+        </div>
+        <script src="stylesheet/jquery-3.5.0.min.js"></script>
+        <script src="stylesheet/bootstrap-4.4.1-dist/css/bootstrap.min.css"></script>
+        <script src="stylesheet/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>                                       
+    </body>
+</html?
