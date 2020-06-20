@@ -12,7 +12,7 @@ gulp.task("test", async function(){
 });
 
 /**
- * コンパイル
+ * assemble ts to js
  */
 gulp.task("assemble",  async function(){
     gulp.src("src/*.ts")

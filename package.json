@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/simonNozaki/utiljs#readme",
   "dependencies": {
+    "@types/request": "^2.48.1",
     "gulp": "^4.0.2",
     "gulp-typescript": "^5.0.1",
-    "jasmine": "^3.4.0"
+    "jasmine": "^3.4.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "typescript": "^3.4.5"

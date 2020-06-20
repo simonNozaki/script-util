@@ -131,12 +131,12 @@ describe("formatYMDWith", function(){
 
     // 正常な形式
     it("001", function(){
-        expect(scriptUtil.formatYMDWith(new Date(), "/")).toBe("2019/5/31");
+        expect(scriptUtil.formatYMDWith(new Date(), "/")).toBe("2020/6/20");
     });
 
     // 正常な形式
     it("002", function(){
-        expect(scriptUtil.formatYMDWith(new Date(), "-")).toBe("2019-5-31");
+        expect(scriptUtil.formatYMDWith(new Date(), "-")).toBe("2020-6-20");
     });
 
     // null
